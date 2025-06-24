@@ -293,7 +293,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onBack, portfolio }) => {
                         }}
                       >
                         <img 
-                          src={leadMember.avatar} 
+                          src=VivekImg
                           alt={leadMember.name}
                           className="w-full h-full object-cover"
                         />
