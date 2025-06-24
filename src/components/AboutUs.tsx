@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Github, Linkedin, Instagram, Code, Brain, Server, Sparkles, Zap, Star } from 'lucide-react';
 import { NavBar } from './NavBar';
-import VivekImg from '/src/assets/Vivek.jpeg';
+import VivekImg from '../assets/Vivek.jpeg';
 import AnushkaImg from '/src/assets/anushka.jpg';
 import RishikaImg from '/src/assets/rishika.jpg';
 
