@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Github, Linkedin, Instagram, Code, Brain, Server, Sparkles, Zap, Star } from 'lucide-react';
 import { NavBar } from './NavBar';
 import VivekImg from '../assets/Vivek.jpeg';
-import AnushkaImg from '/src/assets/anushka.jpg';
-import RishikaImg from '/src/assets/rishika.jpg';
+import AnushkaImg from '../assets/anushka.jpg';
+import RishikaImg from '../assets/rishika.jpg';
 
 interface AboutUsProps {
   onBack: () => void;
