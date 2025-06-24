@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Github, Linkedin, Instagram, Code, Brain, Server, Sparkles, Zap, Star } from 'lucide-react';
 import { NavBar } from './NavBar';
+import VivekImg from '/src/assets/Vivek.jpeg';
+import AnushkaImg from '/src/assets/anushka.jpg';
+import RishikaImg from '/src/assets/rishika.jpg';
 
 interface AboutUsProps {
   onBack: () => void;
@@ -34,7 +37,7 @@ const teamMembers: TeamMember[] = [
     education: '3rd Year BTech - MUJ',
     description: 'Builds the vision',
     accentColor: '#A78BFA',
-    avatar: '/src/assets/Vivek.jpeg',
+    avatar: VivekImg,
     social: {
       github: 'https://github.com/viv2005ek',
       linkedin: 'https://www.linkedin.com/in/vivek-kumar-garg-097677280/',
@@ -51,7 +54,7 @@ const teamMembers: TeamMember[] = [
     education: '3rd Year BTech - MUJ',
     description: 'Trains the AI brain',
     accentColor: '#5EEAD4',
-    avatar: '/src/assets/anushka.jpg',
+    avatar: AnushkaImg,
     social: {
       github: 'https://github.com/anushka2456',
       linkedin: 'https://www.linkedin.com/in/anushka-agarwal-689b462a3',
@@ -67,7 +70,7 @@ const teamMembers: TeamMember[] = [
     education: '3rd Year BTech - MUJ',
     description: 'Powers the engine',
     accentColor: '#FCA5A5',
-    avatar: '/src/assets/rishika.jpg',
+    avatar: RishikaImg,
     social: {
       linkedin: 'https://www.linkedin.com/in/rishika-agrawal-7b49a2293',
       instagram: 'https://www.instagram.com/rishika_0601?igsh=MTN2aHhlbG82cGJi'
