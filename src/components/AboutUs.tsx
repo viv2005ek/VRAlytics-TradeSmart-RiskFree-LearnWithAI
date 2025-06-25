@@ -293,7 +293,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onBack, portfolio }) => {
                         }}
                       >
                         <img 
-                          src={leadMember.avatar} 
+                          src="https://drive.google.com/file/d/1gyAqJduUJWrUfRpCvHC-_FjMkZp8bgKg/view?usp=drive_link"
                           alt={leadMember.name}
                           className="w-full h-full object-cover"
                         />
