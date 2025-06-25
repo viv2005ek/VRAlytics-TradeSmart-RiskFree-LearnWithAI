@@ -70,7 +70,7 @@ const teamMembers: TeamMember[] = [
     education: '3rd Year BTech - MUJ',
     description: 'Powers the engine',
     accentColor: '#FCA5A5',
-    avatar: RishikaImg,
+    avatar: "https://media.licdn.com/dms/image/v2/D5635AQFt7wZ8B-pbzA/profile-framedphoto-shrink_800_800/B56ZcRHtUjHEAg-/0/1748338923320?e=1751464800&v=beta&t=ibrhF0DLhex2B-nGR562IY3TbYPf7yoLlcOn5CaRqpw",
     social: {
       linkedin: 'https://www.linkedin.com/in/rishika-agrawal-7b49a2293',
       instagram: 'https://www.instagram.com/rishika_0601?igsh=MTN2aHhlbG82cGJi'
