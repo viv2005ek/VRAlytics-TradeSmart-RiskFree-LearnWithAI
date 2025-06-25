@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
     education: '3rd Year BTech - MUJ',
     description: 'Builds the vision',
     accentColor: '#A78BFA',
-    avatar: VivekImg,
+    avatar: "https://media.licdn.com/dms/image/v2/D5603AQEPVerQamucHg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721516864867?e=1756339200&v=beta&t=3P5fc49j-9gdCyaX7tQpTzna_-5Azi-VEzzajaDzJUM",
     social: {
       github: 'https://github.com/viv2005ek',
       linkedin: 'https://www.linkedin.com/in/vivek-kumar-garg-097677280/',
@@ -293,7 +293,7 @@ export const AboutUs: React.FC<AboutUsProps> = ({ onBack, portfolio }) => {
                         }}
                       >
                         <img 
-                          src="https://drive.google.com/uc?export=view&id=1gyAqJduUJWrUfRpCvHC-_FjMkZp8bgKg"
+                          src={leadMember.avatar} 
                           alt={leadMember.name}
                           className="w-full h-full object-cover"
                         />
