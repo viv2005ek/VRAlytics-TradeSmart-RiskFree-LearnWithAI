@@ -54,7 +54,7 @@ const teamMembers: TeamMember[] = [
     education: '3rd Year BTech - MUJ',
     description: 'Trains the AI brain',
     accentColor: '#5EEAD4',
-    avatar: AnushkaImg,
+    avatar: "https://media.licdn.com/dms/image/v2/D5603AQHg71NuoptHYQ/profile-displayphoto-shrink_400_400/B56ZcG8ZbTHgAg-/0/1748168186270?e=1756339200&v=beta&t=85slqiw6mSfdzoNmNsCOMNJ3f_1708rFcw2XuFYTjFI",
     social: {
       github: 'https://github.com/anushka2456',
       linkedin: 'https://www.linkedin.com/in/anushka-agarwal-689b462a3',
