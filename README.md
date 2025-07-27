@@ -1,8 +1,9 @@
 # Stock Analyzer - Production-Ready Trading Platform
 
-## Demo Video - check_here[https://www.linkedin.com/posts/vivek-kumar-garg-097677280_stockmarketrevolution-aifortrading-bolthackathon-activity-7343948591985586179-Tst2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAERxLrMB9ZjxsIyKIhm06sxQqmckV3pfIfQ]
+## Demo Video – [Check Here](https://www.linkedin.com/posts/vivek-kumar-garg-097677280_stockmarketrevolution-aifortrading-bolthackathon-activity-7343948591985586179-Tst2?utm_source=share&utm_medium=member_desktop&rcm=ACoAAERxLrMB9ZjxsIyKIhm06sxQqmckV3pfIfQ)
 
-## App link-  check_here[https://vralytics-tradesmart-riskfree-learnai.netlify.app/]
+## App Link – [Check Here](https://vralytics-tradesmart-riskfree-learnai.netlify.app/)
+
 
 A comprehensive stock trading application built with React, TypeScript, and Supabase. Features real-time stock data, portfolio management, 3D visualizations, and a complete trading system.
 
