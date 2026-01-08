@@ -14,7 +14,7 @@ interface VivekQuantProps {
 }
 
 // API credentials
-const API_KEY = "e234c5a226a94980b586efd2ed1c48a0";
+const API_KEY = "7de4a8623b2847a89ff87c2eb970831d";
 const REPLICA_ID = "rcda3332ad7b";
 const PERSONA_ID = "p742791b42e5";
 const API_BASE_URL = "https://tavusapi.com/v2";
