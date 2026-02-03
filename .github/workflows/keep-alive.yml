@@ -101,11 +101,3 @@ jobs:
           Your Supabase project will remain active! ✅
           EOF
       
-      # STEP 4: Save log (optional)
-      - name: 💾 Save Log File
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: supabase-ping-log
-          path: summary.txt
-          retention-days: 30
