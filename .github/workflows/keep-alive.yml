@@ -1,103 +1,74 @@
-name: 🚀 Keep Supabase Alive
+
+name: Supabase Keep Alive
 
 on:
-  # SCHEDULE - Runs every 6 hours
   schedule:
-    # At :00 minutes of every 6th hour (00:00, 06:00, 12:00, 18:00 UTC)
-    - cron: '0 */12 * * *'
-  
-  # MANUAL - Click "Run workflow" button
+    - cron: "0 */6 * * *"
+
   workflow_dispatch:
-  
-  # AUTO - Runs when code is pushed (any branch)
-  push:
-  
-  # AUTO - Runs on pull requests (any branch)
-  pull_request:
 
 jobs:
-  ping:
+  keepalive:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    
+
     steps:
-      # STEP 1: Show info
-      - name: 📊 Show Execution Info
+      - name: Keep Supabase Active
         run: |
-          echo "========================================"
-          echo "🏁 Supabase Keep-Alive Started"
-          echo "🕐 UTC Time: $(date -u '+%Y-%m-%d %H:%M:%S')"
-          echo "🎯 Trigger: ${{ github.event_name }}"
-          echo "👤 Actor: ${{ github.actor }}"
-          echo "🌿 Branch: ${{ github.ref }}"
-          echo "🔧 Workflow: ${{ github.workflow }}"
-          echo "========================================"
-      
-      # STEP 2: Ping Supabase with retry
-      - name: 📡 Ping Supabase API
-        run: |
-          echo "Target: ${{ secrets.SUPABASE_URL }}/rest/v1/"
-          
-          MAX_RETRIES=3
-          RETRY_DELAY=5
-          SUCCESS=false
-          
-          for i in $(seq 1 $MAX_RETRIES); do
-            echo "Attempt $i of $MAX_RETRIES..."
-            
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-              -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
-              -H "Accept: application/json" \
-              -m 15 \
-              "${{ secrets.SUPABASE_URL }}/rest/v1/" || echo "CURL_ERROR")
-            
-            echo "HTTP Status: $STATUS"
-            
-            # Any 2xx or 3xx response is success
-            if [[ "$STATUS" =~ ^2[0-9][0-9]$ ]] || [[ "$STATUS" =~ ^3[0-9][0-9]$ ]]; then
-              echo "✅ SUCCESS! Supabase responded normally."
-              SUCCESS=true
-              break
-            fi
-            
-            # Even 401/403 means endpoint exists (counts as activity!)
-            if [[ "$STATUS" =~ ^4[0-9][0-9]$ ]]; then
-              echo "⚠️ Authentication needed, but endpoint EXISTS (this counts as activity!)"
-              SUCCESS=true
-              break
-            fi
-            
-            if [ $i -lt $MAX_RETRIES ]; then
-              echo "⏳ Waiting $RETRY_DELAY seconds before retry..."
-              sleep $RETRY_DELAY
-            fi
-          done
-          
-          if [ "$SUCCESS" = false ]; then
-            echo "❌ All attempts failed"
+
+          echo "Starting Supabase keep alive..."
+
+          ACCESS_TOKEN=$(curl -s \
+            -X POST \
+            "${{ secrets.SUPABASE_URL }}/auth/v1/token?grant_type=password" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "email":"${{ secrets.DEMO_EMAIL }}",
+              "password":"${{ secrets.DEMO_PASSWORD }}"
+            }' | jq -r '.access_token')
+
+          if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" = "null" ]; then
+            echo "Authentication failed"
             exit 1
           fi
-      
-      # STEP 3: Log success
-      - name: 📝 Log Completion
-        if: success()
-        run: |
-          echo "========================================"
-          echo "✅ Supabase Keep-Alive Completed"
-          echo "🕐 Finished at: $(date -u '+%H:%M:%S UTC')"
-          echo "📅 Next run: In 6 hours"
-          echo "========================================"
-          
-          # Create simple log file
-          cat > summary.txt << EOF
-          Supabase Keep-Alive Summary
-          ===========================
-          Time: $(date -u)
-          Event: ${{ github.event_name }}
-          Branch: ${{ github.ref }}
-          Status: SUCCESS
-          Project: ${{ secrets.SUPABASE_URL }}
-          
-          Your Supabase project will remain active! ✅
-          EOF
-      
+
+          echo "Authenticated successfully"
+
+          # profiles
+          curl -s \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/profiles?select=*&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Authorization: Bearer $ACCESS_TOKEN"
+
+          # user_portfolios
+          curl -s \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/user_portfolios?select=*&limit=1" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Authorization: Bearer $ACCESS_TOKEN"
+
+          # user_stocks
+          curl -s \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/user_stocks?select=*&limit=5" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Authorization: Bearer $ACCESS_TOKEN"
+
+          # transactions
+          curl -s \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/transactions?select=*&limit=5" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Authorization: Bearer $ACCESS_TOKEN"
+
+          # watchlist
+          curl -s \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/watchlist?select=*&limit=5" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Authorization: Bearer $ACCESS_TOKEN"
+
+          # net_worth_history
+          curl -s \
+            "${{ secrets.SUPABASE_URL }}/rest/v1/net_worth_history?select=*&limit=5" \
+            -H "apikey: ${{ secrets.SUPABASE_KEY }}" \
+            -H "Authorization: Bearer $ACCESS_TOKEN"
+
+          echo "Supabase keep alive completed."
